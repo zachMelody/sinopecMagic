@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         上海石化智能练兵
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  try to take over the world!
 // @author       You
 // @match        https://sia.sinopec.com/ept/pages/front/exam_review.html*
