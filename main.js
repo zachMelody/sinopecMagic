@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         上海石化智能练兵
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  try to take over the world!
 // @author       You
 // @match        https://sia.sinopec.com/ept/pages/front/exam_review.html*
 // @match https://sia.sinopec.com/ept/pages/exam/exam_info.html?ptId=729&nounExtendLogo=post_exam
 // @match https://sia.sinopec.com/ept/pages/front/index.html*
 // @match https://sia.sinopec.com/*
+// @updateURL https://raw.githubusercontent.com/zachMelody/sinopecMagic/main/main.js
+// @@downloadURL https://raw.githubusercontent.com/zachMelody/sinopecMagic/main/main.js
 // @icon         https://www.google.com/s2/favicons?domain=sinopec.com
 // @grant        GM_xmlhttpRequest
 // @grant        GM_download
