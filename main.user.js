@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sinopecMagic
 // @namespace   sinopecMagic
-// @version      1.6
+// @version      1.7
 // @description  This is a sinopecMagic
 // @author       zachMelody
 // @match        https://sia.sinopec.com/ept/pages/front/exam_review.html*
@@ -13,18 +13,17 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_download
 // @run-at      document-idle
-// @updateURL 	https://github.com/zachMelody/sinopecMagic/raw/master/main.user.js
-// @downloadURL 	https://github.com/zachMelody/sinopecMagic/raw/master/main.user.js
 // ==/UserScript==
 
 https: (function () {
   'use strict';
+  let API_URL = 'http://192.168.3.204:8012';
   console.log('答题脚本初始化...');
 
   function post(data) {
     GM_xmlhttpRequest({
       method: 'POST',
-      url: 'http://127.0.0.1:5000/api',
+      url: `${API_URL}/api`,
       data: data,
       onload: function (response) {
         console.log('请求成功');
@@ -91,7 +90,7 @@ https: (function () {
     let jsonContent = JSON.stringify($UserExam.examPaperInfo.partitions[0]);
     GM_xmlhttpRequest({
       method: 'POST',
-      url: 'http://127.0.0.1:5000/api',
+      url: `${API_URL}/api`,
       data: jsonContent,
       headers: { 'Content-Type': 'application/json' },
 
@@ -138,7 +137,7 @@ https: (function () {
     GM_xmlhttpRequest({
       method: 'GET',
       responseType: 'json',
-      url: 'http://127.0.0.1:5000/result',
+      url: `${API_URL}/result`,
       onload: function (response) {
         console.log('请求成功');
         answers = response.response.data;
