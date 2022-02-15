@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sinopecMagic
 // @namespace   sinopecMagic
-// @version      1.4
+// @version      1.6
 // @description  This is a sinopecMagic
 // @author       zachMelody
 // @match        https://sia.sinopec.com/ept/pages/front/exam_review.html*
@@ -13,9 +13,11 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_download
 // @run-at      document-idle
+// @updateURL 	https://github.com/zachMelody/sinopecMagic/raw/master/main.user.js
+// @downloadURL 	https://github.com/zachMelody/sinopecMagic/raw/master/main.user.js
 // ==/UserScript==
 
-(function () {
+https: (function () {
   'use strict';
   console.log('答题脚本初始化...');
 
@@ -113,7 +115,7 @@
 
   //在页面加入控制按钮
   function add() {
-    var b = $('<button>忽略：保存HTML</button>');
+    let b = $('<button>忽略：保存HTML</button>');
 
     let showAnswersBtn = $('<button id="moded">3. 显示答案</button>');
     showAnswersBtn.prependTo('body');
