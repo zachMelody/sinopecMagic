@@ -12,12 +12,14 @@
 // @icon         https://www.google.com/s2/favicons?domain=sinopec.com
 // @grant        GM_xmlhttpRequest
 // @grant        GM_download
+// @connect 127.0.0.1
+// @connect 192.168.3.2
 // @run-at      document-idle
 // ==/UserScript==
 
 https: (function () {
   'use strict';
-  let API_URL = 'http://192.168.3.204:8012';
+  let API_URL = 'http://192.168.3.2:8012';
   console.log('答题脚本初始化...');
 
   function post(data) {
@@ -27,7 +29,6 @@ https: (function () {
       data: data,
       onload: function (response) {
         console.log('请求成功');
-        sendQuestionsFlag = true;
 
         console.log(response.responseText);
       },
@@ -93,10 +94,11 @@ https: (function () {
       url: `${API_URL}/api`,
       data: jsonContent,
       headers: { 'Content-Type': 'application/json' },
-
+      synchronous: true,
       onload: function (response) {
         console.log('请求成功');
         console.log(response.responseText);
+        sendQuestionsFlag = true;
         // answers = response.responseText.data;
       },
       onerror: function (response) {
@@ -260,7 +262,6 @@ https: (function () {
     }
   }, 1000);
 
-  let sendQuestionsFlag = false;
   //do something
   function checkUrl() {
     let url = window.location.href;
@@ -277,17 +278,20 @@ https: (function () {
         }
         break;
       case 'https://sia.sinopec.com/ept/pages/exam/exam_info.html?ptId=1079&nounExtendLogo=post_exam':
-        if (confirm('是否开始答题')) {
-          sendQuestions();
-          alert(sendQuestionsFlag ? '获取答案成功' : '获取答案失败');
-          if (sendQuestions && confirm('请再次确认是否开始答题')) {
-            startExam();
-          } else {
-            try {
-              window.close();
-            } catch (e) {}
+        setTimeout(() => {
+          console.log('wait sendQuestions..');
+          if (confirm('是否开始答题')) {
+            sendQuestions();
+            // alert(sendQuestionsFlag ? '获取答案成功' : '获取答案失败');
+            if (sendQuestions && confirm('请再次确认是否开始答题')) {
+              startExam();
+            } else {
+              try {
+                window.close();
+              } catch (e) {}
+            }
           }
-        }
+        }, 2500);
         break;
       case 'https://sia.sinopec.com/ept/pages/exam/exam_answer.html':
         if (confirm('是否显示答案？')) {
