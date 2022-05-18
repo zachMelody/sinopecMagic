@@ -27,10 +27,13 @@ https: (function () {
       method: 'POST',
       url: `${API_URL}/api`,
       data: jsonContent,
-      headers: { 'Content-Type': 'application/json' },
-      synchronous: true,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
       onload: function (response) {
-        answers = response.response.data;
+        let res = JSON.parse(response.response);
+        let answers = res.data;
         console.log('请求成功', answers);
         console.log(response.response, typeof response.response);
 
