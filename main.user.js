@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         sinopecMagic
 // @namespace   sinopecMagic
-// @version      1.8
+// @version      1.9
 // @description  This is a sinopecMagic
 // @author       zachMelody
 // @match        https://sia.sinopec.com/ept/pages/exam/exam_info.html*
+// @match        https://sia.sinopec.com/ac/pages/exam/my_exam.html*
 // @match        http://localhost:63342/%E5%B2%97%E4%BD%8D%E7%BB%83%E5%85%B5/%E9%A2%98%E7%9B%AE.html*
 // @icon         https://www.google.com/s2/favicons?domain=sinopec.com
 // @grant        GM_xmlhttpRequest
@@ -92,7 +93,9 @@ https: (function () {
     answers.forEach(function (element) {
       $(`#que_${element.num}`)
         .children('.row')
-        .append(`<p style="color:red">${element.answer}</p>`);
+        .append(
+          `<p style="color:red">${element.answer} --> ${element.choice}</p>`
+        );
       try {
         // 选择
         let radio_list = $(`#que_${element.num}`).find('.radio input');
