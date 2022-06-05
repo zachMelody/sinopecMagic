@@ -12,6 +12,7 @@
 // @grant        GM_download
 // @connect 127.0.0.1
 // @connect 192.168.3.2
+// @connect cn-hn-dx-1.natfrp.cloud
 // @run-at      document-idle
 // ==/UserScript==
 
@@ -154,20 +155,20 @@ https: (function () {
       onload: function (response) {
         let res = JSON.parse(response.response);
         let data = res.data;
-        console.log('请求成功', data);
+        console.log('+ 服务状态：成功', data);
         console.log(response.response, typeof response.response);
 
         drawTableAndChoose(data);
       },
       onerror: function (response) {
-        console.log('请求失败', response);
+        console.log('- 服务状态：失败', response);
       },
     });
   }
 
   const checkCloudServer = setInterval(() => {
     let submitButtom = document.querySelector('#startExam');
-    console.log('检查页面状态：', submitButtom);
+    console.log('检查服务状态：', submitButtom);
 
     if (submitButtom != null && submitButtom.innerText == '开始') {
       clearInterval(checkCloudServer);
