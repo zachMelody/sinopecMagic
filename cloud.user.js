@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sinopecMagic-cloud
 // @namespace   sinopecMagic-cloud
-// @version      1.1
+// @version      1.2
 // @description  This is a sinopecMagic
 // @author       zachMelody
 // @match        https://sia.sinopec.com/ept/pages/exam/exam_info.html*
@@ -147,21 +147,25 @@ https: (function () {
     }
   }, 300);
 
-  function getCloudServerStatus() {
+  function getCloudServerStatus(ele) {
     GM_xmlhttpRequest({
       method: 'GET',
       url: `${API_URL}/api`,
 
       onload: function (response) {
-        let res = JSON.parse(response.response);
+        let res = response.response;
         let data = res.data;
         console.log('+ 服务状态：成功', data);
         console.log(response.response, typeof response.response);
 
-        drawTableAndChoose(data);
+        ele.innerText = '✔️ 进入自动答题';
+        ele.classList.add('btn-danger');
       },
       onerror: function (response) {
         console.log('- 服务状态：失败', response);
+
+        ele.innerText = '⛔需要手动答题⛔';
+        ele.classList.add('btn-success');
       },
     });
   }
@@ -172,7 +176,7 @@ https: (function () {
 
     if (submitButtom != null && submitButtom.innerText == '开始') {
       clearInterval(checkCloudServer);
-      getCloudServerStatus();
+      getCloudServerStatus(submitButtom);
     }
   }, 1000);
 })();
