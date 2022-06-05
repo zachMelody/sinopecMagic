@@ -158,14 +158,14 @@ https: (function () {
         console.log('+ 服务状态：成功', data);
         console.log(response.response, typeof response.response);
 
-        ele.innerText = '✔️ 进入自动答题';
-        ele.classList.add('btn-danger');
+        ele.innerText = '✔️ 自动答题';
+        ele.classList.add('btn-success');
       },
       onerror: function (response) {
         console.log('- 服务状态：失败', response);
 
         ele.innerText = '⛔需要手动答题⛔';
-        ele.classList.add('btn-success');
+        ele.classList.add('btn-danger');
       },
     });
   }
