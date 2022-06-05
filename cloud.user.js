@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sinopecMagic-cloud
 // @namespace   sinopecMagic-cloud
-// @version      1.2
+// @version      1.3
 // @description  This is a sinopecMagic
 // @author       zachMelody
 // @match        https://sia.sinopec.com/ept/pages/exam/exam_info.html*
