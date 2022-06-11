@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         sinopecMagic-cloud
 // @namespace   sinopecMagic-cloud
-// @version      1.3
+// @version      1.4
 // @description  This is a sinopecMagic
 // @author       zachMelody
 // @match        https://sia.sinopec.com/ept/pages/exam/exam_info.html*
@@ -118,21 +118,21 @@ https: (function () {
 
     // 搜题
 
-    for (let i = 1; i <= 50; i++) {
-      let topic = $(`#que_${i} > div.row > div.col-xs-10`);
-      let que_str = topic[0].textContent;
-      let mod_que_str = que_str.substring(10, que_str.length - 9);
-      let search_url = `https://www.google.com/search?q=${mod_que_str}`;
-      let search_url2 = `https://www.baidu.com/s?wd=${mod_que_str}`;
-      $(`#que_${i}`)
-        .children('.row')
-        .append(
-          `<a href="${search_url2}" target="_blank"> 搜题♥百度_____     </a>`
-        );
-      $(`#que_${i}`)
-        .children('.row')
-        .append(`<a href="${search_url}" target="_blank"> ____搜题♥谷歌 </a>`);
-    }
+    // for (let i = 1; i <= 50; i++) {
+    //   let topic = $(`#que_${i} > div.row > div.col-xs-10`);
+    //   let que_str = topic[0].textContent;
+    //   let mod_que_str = que_str.substring(10, que_str.length - 9);
+    //   let search_url = `https://www.google.com/search?q=${mod_que_str}`;
+    //   let search_url2 = `https://www.baidu.com/s?wd=${mod_que_str}`;
+    //   $(`#que_${i}`)
+    //     .children('.row')
+    //     .append(
+    //       `<a href="${search_url2}" target="_blank"> 搜题♥百度_____     </a>`
+    //     );
+    //   $(`#que_${i}`)
+    //     .children('.row')
+    //     .append(`<a href="${search_url}" target="_blank"> ____搜题♥谷歌 </a>`);
+    // }
   }
 
   const myTimeout = setInterval(() => {
@@ -158,14 +158,20 @@ https: (function () {
         console.log('+ 服务状态：成功', data);
         console.log(response.response, typeof response.response);
 
-        ele.innerText = '✔️ 自动答题';
-        ele.classList.add('btn-success');
+        alert('✔️ 自动答题');
+        setTimeout(() => {
+          ele.innerText = '✔️ 自动答题';
+          ele.classList.add('btn-success');
+        }, 3000);
       },
       onerror: function (response) {
         console.log('- 服务状态：失败', response);
 
-        ele.innerText = '⛔需要手动答题⛔';
-        ele.classList.add('btn-danger');
+        alert('⛔需要手动答题⛔');
+        setTimeout(() => {
+          ele.innerText = '⛔需要手动答题⛔';
+          ele.classList.add('btn-danger');
+        }, 3000);
       },
     });
   }
