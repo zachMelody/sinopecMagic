@@ -156,7 +156,7 @@ https: (function () {
         let res = response.response;
         let data = res.data;
         console.log('+ 服务状态：成功', data);
-        console.log(response.response, typeof response.response);
+        console.log(typeof response, response);
 
         alert('✔️ 自动答题');
         setTimeout(() => {
@@ -166,6 +166,7 @@ https: (function () {
       },
       onerror: function (response) {
         console.log('- 服务状态：失败', response);
+        console.log(typeof response, response);
 
         alert('⛔需要手动答题⛔');
         setTimeout(() => {
