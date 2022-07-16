@@ -13,12 +13,13 @@
 // @connect 127.0.0.1
 // @connect 192.168.3.2
 // @connect cn-hn-dx-1.natfrp.cloud
+// @connect lb2.980626.xyz
 // @run-at      document-idle
 // ==/UserScript==
 
 https: (function () {
   'use strict';
-  let API_URL = 'https://cn-hn-dx-1.natfrp.cloud:64505';
+  let API_URL = 'https://lb2.980626.xyz:64505';
   console.log('答题脚本初始化...');
 
   // 展示答案
